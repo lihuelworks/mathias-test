@@ -1,0 +1,301 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+$max-logo-width: 65px;
+
+.container {
+  display: grid;
+  gap: 0px 0px;
+  margin-bottom: 100px;
+  grid-template-rows: 75px 125px auto auto auto auto;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "masthead masthead masthead masthead masthead"
+    "hero hero hero hero hero"
+    "nav nav nav nav nav"
+    "banner banner banner banner banner"
+    "doorbusters-gallery doorbusters-gallery doorbusters-gallery doorbusters-gallery doorbusters-gallery";
+
+  .lenovo-logo {
+    position: absolute;
+    max-width: var(--max-logo-width);
+    top: 0;
+    left: 0;
+  }
+
+  .masthead {
+    grid-area: masthead;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 20px;
+    margin-left: calc(#{$max-logo-width} + 8px);
+    ul {
+      flex: 0;
+      list-style: none;
+      align-items: center;
+      display: inline-flex;
+      text-transform: uppercase;
+      font-weight: bold;
+      li {
+        padding: 0 10px;
+      }
+    }
+    form {
+      display: flex;
+      justify-content: space-between;
+      width: 380px;
+      font-size: 16px;
+      padding: 8px 15px;
+      margin-left: 40px;
+      border: solid 1px;
+      border-radius: 0 6px 6px 6px;
+      border-color: #777;
+      overflow: hidden;
+      input {
+        border: none;
+        padding: 0;
+      }
+      button {
+        color: #888;
+        justify-self: flex-end;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        outline: inherit;
+      }
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-items: center;
+      font-size: 0.8rem;
+      color: #777;
+      .contact-top {
+        display: flex;
+        align-items: center;
+        img {
+          padding: 0 20px;
+        }
+      }
+      .contact-bottom {
+        display: flex;
+        margin-top: -10px;
+      }
+    }
+  }
+
+  .hero {
+    grid-area: hero;
+    display: flex;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .nav {
+    grid-area: nav;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f8f8f8;
+    height: 100%;
+    > div {
+      display: inline-flex;
+      height: 100%;
+      padding: 10px 0;
+      /* background-color: rebeccapurple; */
+      > * {
+        align-self: center;
+        width: 100%;
+      }
+      > img {
+        margin-right: 15px;
+      }
+      > p {
+        text-align: center;
+        color: #737373;
+      }
+    }
+    > div:hover {
+      color: #ff6a00;
+      border-bottom: #ff6a00 solid 5px;
+      margin-bottom: -5px;
+    }
+  }
+
+  .banner {
+    grid-area: banner;
+    display: flex;
+    justify-content: center;
+    padding: 20px 45px;
+    img {
+      display: flex;
+      width: auto;
+      height: auto;
+      min-height: 70px;
+    }
+  }
+
+  .doorbusters-gallery {
+    grid-area: doorbusters-gallery;
+    display: grid;
+    justify-items: center;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "doorbusters-flag-1 doorbusters-flag-2 doorbusters-flag-3 doorbusters-flag-4"
+      "doorbusters-item-1 doorbusters-item-2 doorbusters-item-3 doorbusters-item-4";
+  }
+
+  @for $i from 1 through 4 {
+    .doorbuster-flag-#{$i} {
+      grid-area: doorbusters-flag-#{$i};
+      margin-bottom: 50px;
+    }
+    .doorbusters-item-#{$i} {
+      grid-area: doorbusters-item-#{$i};
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      border-right: rgba(115, 115, 115, 0.5) solid 1px;
+      @if $i == 4 {
+        border-right: none;
+      }
+      h1 {
+        margin: 0;
+      }
+      img {
+        height: 200px;
+      }
+      a {
+        color: #3e8ddd;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      a:first-of-type {
+        font-size: 14px;
+        color: #3e8ddd;
+      }
+      .item-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px 0 20px;
+        h1 {
+          color: #3e8ddd;
+        }
+        h3 {
+          color: #7a7878;
+          font-style: italic;
+          font-weight: lighter;
+        }
+      }
+      .doorbuster-price {
+        list-style: none;
+        
+        >:nth-child(3) {
+          color: #7a7878;
+        }
+        li {
+          font-weight: bold;
+        }
+      }
+      .doorbuster-price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        i {
+          font-style: normal;
+          font-weight: normal;
+        }
+      }
+      .doorbuster-shipping {
+        margin: 5px 0 10px;
+        color: #ff6a00;
+        font-weight: bold;
+      }
+      .doorbuster-rating {
+        display: inline-flex;
+        align-items: flex-start;
+        .fa-star {
+          color: #e2231a;
+        }
+        span {
+          margin: 10px 2px 5px;
+        }
+        .doorbuster-rating-number {
+          font-weight: 900;
+        }
+        .doorbuster-rating-ammount{
+          font-weight: normal;
+        }
+      }
+      button {
+        width: 250px;
+        height: 45px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        background-color: #1976a1;
+        margin: 20px 0;
+      }
+      .doorbuster-specs {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 50%;
+        list-style: none;
+        > li {
+          width: 200px;
+          text-align: start;
+          padding: 15px 0;
+          border-bottom: rgba(115, 115, 115, 0.5) solid 1px;
+          p {
+            font-weight: lighter;
+            color: #737373;
+          }
+          div {
+            font-weight: bold;
+          }
+          a {
+            margin-top: 10px;
+          }
+        }
+        > li:last-of-type {
+        border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .container {
+    .contact {
+      display: none;
+    }
+    .hero {
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    .banner {
+      img {
+        width: auto;
+      }
+    }
+  }
+}
